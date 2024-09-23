@@ -1,0 +1,32 @@
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="card_cont">
+        <div class="cards" *ngFor="let item of stationCount?.data">
+            <div class="top">
+              <div>
+                <p>{{ item.active.displayName }}</p>
+                <p class="text-center">{{ item.active.value }}</p>
+              </div>
+              <div *ngIf="item.maintenance">
+                <p>{{ item.maintenance.displayName }}</p>
+                <p class="text-center">{{ item.maintenance.value }}</p>
+              </div>
+              <div>
+                <p>{{ item.inactive.displayName }}</p>
+                <p class="text-center">{{ item.inactive.value }}</p>
+              </div>
+            </div>
+            <div class="bottom">
+              <span class="img_cont" style="background-color: {{ item.colorCode }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" viewBox="0 0 512 512"><path fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="32" d="M416 221.25V416a48 48 0 0 1-48 48H144a48 48 0 0 1-48-48V96a48 48 0 0 1 48-48h98.75a32 32 0 0 1 22.62 9.37l141.26 141.26a32 32 0 0 1 9.37 22.62Z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 56v120a32 32 0 0 0 32 32h120"/></svg>
+            </span>
+              <div class="d-flex displayname flex-column text-center">
+                <p class="count m-0">{{ item.value }}</p>
+                
+                <h3 class="fw-bold">{{ item.displayName }}</h3>
+              </div>
+            </div>
+          </div>
+          </div>
+    </div>
+</div>

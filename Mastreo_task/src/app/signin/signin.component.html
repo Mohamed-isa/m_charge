@@ -1,0 +1,27 @@
+<div class="d-flex align-items-center justify-content-center vh-100" style="background-image: url('assets/images/loginbg.jpg'); background-size: cover;">
+    <div class="bg-white p-4 rounded shadow" style="width: 400px;">
+      <div class="text-center mb-3">
+        <img src="assets/images/logo.png" alt="Logo" class="img-fluid mb-2 w-200" />
+        <h3 class="fw-bold">Welcome Back!</h3>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" formControlName="email" placeholder="Enter your username" required />
+          <mat-icon matSuffix ><i class="fas fa-user-outline"></i></mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="passwordVisible ? 'text' : 'password'" formControlName="password" placeholder="Enter your password" required />
+          <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility()">
+            <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <p class="text-end m-0">Forget Password?</p>
+        <p *ngIf="showerror">{{ this.errormsg }}</p>
+        <button mat-raised-button color="primary" class="btn btn-block w-100" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </div>
+  </div>
+  

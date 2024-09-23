@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="filter">
+    <h2 class="fw-bold m-0">Parking History Report</h2>
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14"/></svg>
+        <button (click)="exportToExcel()" style="background-color: #313131b8 !important;" class="mx-3 btn btn-primary">Export</button>
+    </div>
+</div>
+<div class="table-container">
+    <mat-table #matTable [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="s.no">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="">
+          S.No
+        </mat-header-cell>
+        <mat-cell *matCellDef="let i=index" data-label="S.No" class="">
+          {{i+1 }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="customer_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="">
+           Customer Name
+        </mat-header-cell>
+        <mat-cell *matCellDef="let parkReport" data-label=" Bill Date" class="">
+          {{ parkReport.customer_name }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="station_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="">
+          Station
+        </mat-header-cell>
+        <mat-cell *matCellDef="let parkReport" data-label="Bill No" class="">
+          {{ parkReport.station_name }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="booking_status_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="">
+          Booking Status
+        </mat-header-cell>
+        <mat-cell *matCellDef="let parkReport" data-label="Taxable Amount" class="">
+          {{ parkReport.booking_status_name }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="duration">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="">
+            Duration 
+        </mat-header-cell>
+        <mat-cell *matCellDef="let parkReport" data-label="GST Amount" class="">
+          {{ parkReport.duration }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="parking_type_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="">
+          Parking Type
+        </mat-header-cell>
+        <mat-cell *matCellDef="let parkReport" data-label="Bill Amount" class="">
+          {{ parkReport.parking_type_name }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="total_amount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="">
+          Amount(Rs)
+        </mat-header-cell>
+        <mat-cell *matCellDef="let parkReport" data-label="Bill Amount" class="">
+          {{ parkReport.total_amount }}
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [ngStyle]="{ 'display': !nodatafound ? 'block' : 'none' }" [pageSizeOptions]="[10, 25, 50]"
+      [showFirstLastButtons]="true"></mat-paginator>
+        <div *ngIf="nodatafound" class="no-data-message">
+      <!-- <i class="fa-solid fa-file-circle-exclamation"></i> -->
+      <i class="fa-solid fa-file-circle-exclamation"></i>
+      <p class="msg">No data found</p>
+    </div>
+  </div>

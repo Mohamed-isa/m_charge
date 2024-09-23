@@ -1,0 +1,48 @@
+<div class="w-100 header" >
+    <div>
+        <img src="assets/images/headerlogo.png" class="img-fluid logo">
+
+    </div>
+     <!-- Menu in the center -->
+    <div class="d-flex align-items-center">
+      <div class="menu_btn mx-2" >
+        <a href="/dashboard">
+          <span class="head_icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M13 9V3h8v6zM3 13V3h8v10zm10 8V11h8v10zM3 21v-6h8v6zm2-10h4V5H5zm10 8h4v-6h-4zm0-12h4V5h-4zM5 19h4v-2H5zm4-2"/></svg></span>
+          <p class="m-0 p-1">Dashboard</p>
+        </a>
+        
+      </div>
+      <div class="menu_btn mx-2" >
+        <a href="/parking_report">
+          <span class="head_icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="currentColor" d="M9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2zm2 2H5V5h14v14.1M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"/></svg></span>
+          <p class="m-0 p-1">Parking Report</p>
+        </a>
+      </div>
+    </div>
+  
+      <!-- Profile section on the right -->
+     <div class="d-flex align-items-center">
+    <div class="d-flex">
+        <img src="assets/images/profile.png" class="profilePic">
+        <div class="menu_btn" >
+          <a>
+            <p class="m-0 p-1">{{profileName}}</p>
+          </a>
+        </div>
+        <div class="menu_btn mx-2" >
+          <svg (click)="confirmLogout()" xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17.625c-.074 1.852-1.617 3.424-3.684 3.374c-.481-.012-1.076-.18-2.265-.515c-2.861-.807-5.345-2.164-5.941-5.203C3 14.724 3 14.095 3 12.837v-1.674c0-1.257 0-1.886.11-2.445c.596-3.038 3.08-4.395 5.941-5.202c1.19-.335 1.784-.503 2.265-.515c2.067-.05 3.61 1.522 3.684 3.374M21 12H10m11 0c0-.7-1.994-2.008-2.5-2.5M21 12c0 .7-1.994 2.008-2.5 2.5" color="currentColor"/></svg>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+<!-- Confirmation Popup -->
+<div *ngIf="showLogoutPopup" class="popup">
+    <div class="popup-content p-4">
+      <p>Are you sure you want to logout?</p>
+      <button class="btn btn-danger" (click)="logout()">Yes</button>
+      <button class="btn btn-primary mx-3" (click)="cancelLogout()">No</button>
+    </div>
+  </div>
